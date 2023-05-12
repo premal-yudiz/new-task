@@ -78,7 +78,7 @@ def list():
             s.sub_teacher = Teacher.query.get(s.sub_teacher).teacher_name
         return render_template("list.html",student_list=s_list)
     
-# update the student list finction in git
+# update the student list
 @app.route('/update/<id>', methods=["GET","POST"])
 def update(id):
     t = Teacher.query.all()
