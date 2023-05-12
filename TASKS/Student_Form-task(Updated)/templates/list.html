@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Student List</h1>
+    <table border="1">
+        <tr>
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Student Roll_No</th>
+            <th>Student Subject</th>
+            <th>Student Teacher</th>
+            <th>Student Marks</th>
+            <th>Delete</th>
+            <th>Update</th>
+
+        </tr>
+        {% for s in student_list %}
+        <tr>
+            <td>{{s.id}}</td>
+            <td>{{s.name}}</td>
+            <td>{{s.roll_num}}</td>
+            <td>{{s.subject}}</td>
+            <td>{{s.sub_teacher}}</td>
+            <td>{{s.marks}}</td>
+            <td>
+                <a href=" {{url_for( 'delete', id=s.id)}} " onclick="return confirm( ' Are you sure to delete ? ') ">Delete
+            </td>
+             <td>
+                <a href="{{url_for( 'update', id=s.id)}} ">Update
+            </td>
+        </tr>
+        {% endfor%}
+
+    </table><br><br>
+                <hr>
+
+                <div>
+                    <h2>Enter Student Name For View Score</h2>
+                    <form action="" method="post">
+                        <label for="fname">Student name:</label><br>
+                        <input type="text" id="fname" name="name" ><br><br>
+                        <input type="submit" value="View">
+                    </form>
+                </div><br><hr>
+                {% if total and percentage %}
+                <h1> {{s}}'s Score is : {{total}} out of {{count}} </h1>
+                <h1>{{s}}'s  Percentage is : {{percentage}} %</h1>
+                {% else %}
+                <p style="color: red;"> Please Enter valid student Name</p>
+                {% endif %}
+</body>
+
+</html>
